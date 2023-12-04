@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="top">
+        <div class="top-content">
+            <label>
+                <button onclick="addDiv('text')" class="top-button">
+                    <i class="material-icons">text_fields</i>
+                </button>
+            </label>
+            <label>
+                <button onclick="addDiv('speech')" class="top-button">
+                    <i class="material-icons">record_voice_over</i>
+                </button>
+            </label>
+            <label>
+                <button class="top-button" onclick="addDiv('music')">
+                    <i class="material-icons">music_note</i>
+                </button>
+            </label>
+            <label>
+                <button type="checkbox" class="top-button" onclick="addDiv('video')">
+                    <i class="material-icons">video_library</i>
+                </button>
+            </label>
+        </div>
+    </div>
+    <div style="height: 30px;"></div>
+    <div class='title'>
+        <input type="text" placeholder="Title" class="title-box">
+        <input type="text" placeholder="Sub Text" class="sub-box">
+    </div>
+
+    <div class="place" id="place"></div>
+
+    <script>
+        function addDiv(type) {
+            const container = document.getElementById("place");
+            const newDiv = document.createElement("div");
+            if (type === "text") {
+                newDiv.innerHTML = `
+                <div class="text-el">
+                    <div class="delete" onclick="removeDiv(this)">
+                        <i class="material-icons">text_fields</i>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Введіть особу" class="pr">:
+                    </div>
+                    <textarea placeholder="Введіть ${type === 'text' ? 'текст' : 'виступ'}" class="text"></textarea>
+                </div>`;
+                container.appendChild(newDiv);
+            }
+            if (type === "speech") {
+                newDiv.innerHTML = `
+                <div class="per-el">
+                    <div class="delete" onclick="removeDiv(this)">
+                        <i class="material-icons">record_voice_over</i>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Класс" class="prfl">|
+                        <input type="text" placeholder="Коментар" class="prf" style="width:; text-align: start">
+                    </div>
+                </div>`;
+                container.appendChild(newDiv);
+            }
+            if (type === "music") {
+                newDiv.innerHTML = `
+                <div class="mus-el">
+                    <div class="delete" onclick="removeDiv(this)">
+                        <i class="material-icons">music_note</i>
+                    </div>
+                    
+                    <div>
+                        <input type="text" placeholder="Назва" class="m" style="width:; text-align: start">
+                    </div>
+                </div>`;
+                container.appendChild(newDiv);
+            }
+            if (type === "video") {
+                newDiv.innerHTML = `
+                <div class="mus-el">
+                    <div class="delete" onclick="removeDiv(this)">
+                        <i class="material-icons">video_library</i>
+                    </div>
+                    
+                    <div>
+                        <input type="text" placeholder="Назва" class="m" style="width:; text-align: start">
+                    </div>
+                </div>`;
+                container.appendChild(newDiv);
+            }
+        }
+
+        function removeDiv(element) {
+            const container = document.getElementById("place");
+            const parentDiv = element.parentNode.parentNode;
+            container.removeChild(parentDiv);
+        }
+
+        function removeP(element) {
+            const container = document.getElementById("place");
+            const parentDiv = element.parentNode.parentNode;
+            container.removeChild(parentDiv);
+        }
+    </script>
+
+    <style>
+        input[type=checkbox] {
+            display: none;
+            
+        }
+
+        .options i {
+            margin-left: 5px;
+            font-size: 20px;
+            color: #000000; /* Default color */
+        }
+        .options i {
+            margin-left: 5px;
+            font-size: 20px;
+            color: #000000; /* Default color */
+        }
+        .title-box {
+            width: 500px;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
+            border: none;
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .sub-box {
+            width: 500px;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
+            border: none;
+            font-size: 15px;
+            margin-bottom: 50px;
+            
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .text-el {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .per-el {
+
+            display: flex;
+            padding-top: 9px;
+            margin-bottom: 10px;
+            background: #d4d4d4;
+        }
+        .mus-el {
+
+            display: flex;
+            padding-top: 9px;
+            margin-bottom: 10px;
+            background: #e9e8e8;
+        }
+        .m {
+            background: #e9e8e8;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            border: none;
+            width: 300%;
+            margin-left: 10px;
+        }
+        .pr {
+            
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            border: none;
+            width: 100px;
+            margin-left: 10px;
+            
+        }
+        .prf {
+            text-align: center;
+            background: #d4d4d4;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            border: none;
+            width: 200px;
+        }
+        .prfl {
+            text-align: center;
+            background: #d4d4d4;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            border: none;
+            width: 60px;
+        }
+        .text {
+            padding-left: 10px;
+            padding-top: 5px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border: none;
+        }
+        .text-prf {
+            background: #d4d4d4;
+            padding-left: 10px;
+            padding-top: 70px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border: none;
+        }
+
+        .delete {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        i {
+            height: 1px;
+            padding-bottom: 20px;      
+        }
+        
+        .material-icons {
+            margin-bottom: 7px;
+        }
+
+       
+
+        .top {
+            display: flex;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .top-content {
+            
+            margin: 0 auto;
+        }
+        .top-button {
+            border-radius: 10px;
+            box-shadow: 0px 0px 2px 0px;
+            border: none;
+            background-color: #43517F;
+            color: white;
+        }
+        .top-button:hover {
+            transform: scale(102%);
+        }
+        
+        
+
+
+
+    </style>
+</body>
+</html>
